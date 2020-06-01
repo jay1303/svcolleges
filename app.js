@@ -20,6 +20,9 @@ app.use(express.static(__dirname + '/public'));
 app.get('/signupform', (req, res) => {
     res.render("signupform");
 })
+app.get('/', (req, res) => {
+    res.render("loginForm");
+})
 
 app.get('/loginform', (req, res) => {
     res.render("loginForm");
