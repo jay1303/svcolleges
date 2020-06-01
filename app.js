@@ -55,6 +55,6 @@ app.get('/reports', (req, res) => {
     res.render("admindashboard", resultData);
 });
 
-app.listen(3000, () => {
-    wLogger.info(`Server Listening at port: ${3000} `);
+app.listen(process.env.PORT || 3000, () => {
+    wLogger.info(`Server Listening at port `);
 })
