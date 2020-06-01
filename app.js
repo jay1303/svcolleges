@@ -1,9 +1,12 @@
 const express = require('express');
+const dotenv = require('dotenv');
+dotenv.config();
 const router = require('./routes/routes');
 const logger = require('./logger/logger.js');
 const response = require('./responses/response');
 const app = express();
 const bodyParser = require('body-parser');
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -1,5 +1,7 @@
 const mongodb = require('mongodb');
-const url = 'mongodb://localhost:27017/feedback'
+
+// const url = 'mongodb://localhost:27017/feedback'
+const url = process.env.mongo_URL;
 let db;
 
 const mongoClient = new mongodb.MongoClient(url, { useUnifiedTopology: true });
