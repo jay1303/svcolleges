@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>feedback form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <div class="inner">
+
+            <div class="image-holder">
+
+                <img src="images/registration-form-6.jpg" alt="">
+
+            </div>
+
+
+            <form method="POST" action="/feedback/user/signUp">
+                <h3>User Signup Form</h3>
+
+                <div class="form-row">
+                    <input type="text" class="form-control" name="name" placeholder="Name">
+                    <input type="text" class="form-control" name="rollNo" placeholder="RollNo">
+                </div>
+                <div class="form-row">
+                    <input type="email" class="form-control" name="mailId" placeholder="Email">
+                    <input type="number" class="form-control" name="phoneNumber" placeholder="Phone Number">
+                </div>
+                <div class="form-row">
+                    <input type="password" class="form-control" name="password" placeholder="Password">
+                    <input type="password" class="form-control" name="ConfirmPassword" placeholder="Confirm Password">
+                </div>
+                <div class="form-row">
+                    <div class="form-holder">
+                        <select name="branch" id="" class="form-control">
+								<option value="" disabled selected>Choose Your Branch</option>
+								<option value="civil">CIVIL</option>
+								<option value="me">ME</option>
+								<option value="eee">EEE</option>
+								<option value="ece">ECE</option>
+								<option value="cse">CSE</option>
+							</select>
+                        <i class="zmdi zmdi-chevron-down"></i>
+                    </div>
+                    <div class="form-holder">
+                        <select name="semester" id="" class="form-control">
+								<option value="" disabled selected>Choose Your semester</option>
+								<option value="1">1-1</option>
+								<option value="2">1-2</option>
+								<option value="3">2-1</option>
+								<option value="4">2-2</option>
+								<option value="5">3-1</option>
+								<option value="6">3-2</option>
+								<option value="7">4-1</option>
+								<option value="8">4-2</option>
+							</select>
+                        <i class="zmdi zmdi-chevron-down"></i>
+                    </div>
+                </div>
+                <button>Register Now
+						<i class="zmdi zmdi-long-arrow-right"></i>
+                    </button><br>
+
+            </form>
+        </div>
+
+
+    </div>
+    <form method="GET" action="/loginform">
+        <button id="fixedbutton"> exisiting user? login now</button>
+    </form>
+
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>

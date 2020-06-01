@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<title>feedback form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./css/feedbackform.css">
+<link rel="stylesheet" href="./css/table.css">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="./js/table.js">
+</script>
+<script src="./js/time.js">
+</script>
+<link rel="stylesheet" href="./css/time.css">
+
+<script>
+    window.onload = function load() {
+        document.getElementById("userInfo").style.display = "none";
+
+        document.getElementById("user").style.display = "none";
+
+        $('.hover_bkgr_fricc').show();
+        $('.hover_bkgr_fricc').click(function() {
+            $('.hover_bkgr_fricc').hide();
+        });
+        $('.popupCloseButton').click(function() {
+            $('.hover_bkgr_fricc').hide();
+        });
+    }
+</script>
+
+<body>
+
+    <div class="w3-sidebar w3-bar-block w3-light-grey w3-card" style="width:230px">
+        <h5 class="w3-bar-item"><img src="./images/svlogo.png" width="150px" height="150px"></h5>
+        <button class="w3-bar-item w3-button tablink" onclick="feedback();openevent(event, 'feedbackForm');">feedback</button>
+
+        <form method="POST" action="/feedback/user/logout">
+            <div id="user">
+                <input type="text" name="branch" value="<%= branch %>">
+                <input type="text" name="rollNo" value="<%= rollNo %>">
+            </div>
+            <button class="w3-bar-item w3-button tablink"><h5>logout</h5></button>
+        </form>
+
+    </div>
+
+    <div style="margin-left:250px">
+        <div class="w3-padding">
+            <center>
+                <h2> SRI VENKATESWARA COLLEGE OF ENGINEERING</h2>
+
+                <h5>EDUCATION FOR A BETTER SOCIETY</h5>
+
+            </center>
+            <div id="calender" class="calendar">
+                <div class="calendar__month calendar__empty--1"><span class="title"></span>
+                    <div class="year-block hidden">2017</div>
+                    <div class="clock hidden">
+                        <div class="clock__hour__container">
+                            <div class="clock__hour"></div>
+                        </div>
+                        <div class="clock__minute__container">
+                            <div class="clock__minute"></div>
+                        </div>
+                        <div class="clock__second__container">
+                            <div class="clock__second"></div>
+                        </div>
+                        <div class="clock__dot"></div>
+                    </div>
+                    <div class="date-block hidden">
+                        <div class="date-block__month">Jan</div>
+                        <div class="date-block__date">12</div>
+                        <div class="date-block__day">Wed</div>
+                    </div>
+                </div>
+                <div class="calendar__month calendar__empty--2"><span class="title"></span>
+                    <div class="year-block hidden">2017</div>
+                    <div class="clock hidden">
+                        <div class="clock__hour__container">
+                            <div class="clock__hour"></div>
+                        </div>
+                        <div class="clock__minute__container">
+                            <div class="clock__minute"></div>
+                        </div>
+                        <div class="clock__second__container">
+                            <div class="clock__second"></div>
+                        </div>
+                        <div class="clock__dot"></div>
+                    </div>
+                    <div class="date-block hidden">
+                        <div class="date-block__month">Jan</div>
+                        <div class="date-block__date">12</div>
+                        <div class="date-block__day">Wed</div>
+                    </div>
+                </div>
+                <div class="calendar__month calendar__empty--3"><span class="title"></span>
+                    <div class="year-block hidden">2017</div>
+                    <div class="clock hidden">
+                        <div class="clock__hour__container">
+                            <div class="clock__hour"></div>
+                        </div>
+                        <div class="clock__minute__container">
+                            <div class="clock__minute"></div>
+                        </div>
+                        <div class="clock__second__container">
+                            <div class="clock__second"></div>
+                        </div>
+                        <div class="clock__dot"></div>
+                    </div>
+                    <div class="date-block hidden">
+                        <div class="date-block__month">Jan</div>
+                        <div class="date-block__date">12</div>
+                        <div class="date-block__day">Wed</div>
+                    </div>
+                </div>
+            </div>
+            <!-- partial -->
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+            <script src="./time.js"></script>
+
+
+        </div>
+        <form method="POST" action="/feedback/user/submitform">
+            <h4>
+                <div class="hover_bkgr_fricc">
+                    <span class="helper"></span>
+                    <div>
+                        <div class="popupCloseButton">&times;</div>
+                        <h2>
+                            <%= message %>
+                        </h2>
+                    </div>
+                </div>
+                <div id="userInfo">
+                    <input type="text" id="name" name="name" value="<%= name %>">
+                    <input type="text" name="branch" value="<%= branch %>">
+                    <input type="text" name="rollNo" value="<%= rollNo %>">
+                    <input type="text" name="semester" value="<%= semester%>">
+                    <input type="text" name="subject1" value="<%= subject1%>">
+                    <input type="text" name="subject2" value="<%= subject2%>">
+                    <input type="text" name="subject3" value="<%= subject3%>">
+                    <input type="text" name="subject4" value="<%= subject4%>">
+                    <input type="text" name="subject5" value="<%= subject5%>">
+                    <input type="text" name="subject6" value="<%= subject6%>">
+
+
+
+
+
+                </div>
+
+            </h4>
+            <div id="feedbackForm" class="w3-container event" style="display:none">
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <h6 name="subject1">
+                                    <%= subject1 %>
+                                </h6>
+                            </th>
+                            <th>
+                                <h6 name="subject2">
+                                    <%= subject2 %>
+                                </h6>
+                            </th>
+                            <th>
+                                <h6 name="subject3">
+                                    <%= subject3 %>
+                                </h6>
+                            </th>
+                            <th>
+                                <h6 name="subject4">
+                                    <%= subject4 %>
+                                </h6>
+                            </th>
+                            <th>
+                                <h6 name="subject5">
+                                    <%= subject5 %>
+                                </h6>
+                            </th>
+                            <th>
+                                <h6 name="subject6">
+                                    <%= subject6 %>
+                                </h6>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Subject Knowledge</td>
+                            <td><select id="_11" name="_11">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_21" name="_21">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_31" name="_31">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_41" name="_41">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_51" name="_51">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_61" name="_61">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                        </tr>
+                        <tr>
+                            <td>Teaching & Communication Skills</td>
+                            <td><select id="_12" name="_12">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_22" name="_22">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_32" name="_32">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_42" name="_42">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_52" name="_52">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_62" name="_62">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                        </tr>
+                        <tr>
+                            <td>Providing Relevant Examples</td>
+                            <td><select id="_13" name="_13">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_23" name="_23">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_33" name="_33">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_43" name="_43">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_53" name="_53">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_63" name="_63">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                        </tr>
+                        <tr>
+                            <td>Doubts Clarification</td>
+                            <td><select id="_14" name="_14">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_24" name="_24">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_34" name="_34">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_44" name="_44">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_54" name="_54">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_64" name="_64">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                        </tr>
+                        <tr>
+                            <td>On Time Syllabus Coverage</td>
+                            <td><select id="_15" name="_15">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_25" name="_25">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_35" name="_35">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_45" name="_45">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_55" name="_55">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                            <td><select id="_65" name="_65">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                              </select></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <center>
+                    <div class="button_container">
+                        <button class="btn"><span>Submit Feedback</span></button>
+                    </div>
+                </center>
+        </form>
+
+
+        <!-- partial -->
+
+        </div>
+
+    </div>
+
+    <script>
+        function openevent(evt, eventName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("event");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+            }
+            document.getElementById(eventName).style.display = "block";
+            evt.currentTarget.className += " w3-red";
+        }
+
+        function feedback() {
+            document.getElementById("calender").style.display = "none";
+        }
+
+        function submit() {
+            alert("hi")
+            document.getElementById("msg").style.display = "block";
+            document.getElementById("<%= message%>").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("msg").style.display = "none";
+                document.getElementById("<%= message%>").style.display = "none";
+            }, 4000);
+        }
+    </script>
+
+</body>
+
+</html>

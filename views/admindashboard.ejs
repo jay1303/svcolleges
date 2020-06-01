@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/feedbackform.css">
+    <link rel="stylesheet" href="./css/time.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="./js/time.js">
+    </script>
+    <style>
+        .input-container {
+            display: -ms-flexbox;
+            /* IE10 */
+            display: flex;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .icon {
+            padding: 10px;
+            background: #00cccc;
+            color: white;
+            width: 150px;
+            text-align: center;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            outline: none;
+        }
+        
+        .input-field:focus {
+            border: 2px solid #00cccc;
+        }
+        /* Set a style for the submit button */
+        
+        .btn {
+            background-color: #00cccc;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+        
+        .btn:hover {
+            opacity: 1;
+        }
+        
+        .header {
+            overflow: hidden;
+            padding: 10px 10px;
+        }
+        
+        .header a {
+            float: left;
+            color: black;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 25px;
+            border-radius: 4px;
+        }
+        
+        .header a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        
+        .header a.active {
+            background-color: #00cccc;
+            color: white;
+        }
+        
+        .header-right {
+            float: right;
+            width: 200px;
+        }
+        
+        @media screen and (max-width: 500px) {
+            .header a {
+                float: none;
+                display: block;
+                text-align: left;
+            }
+            .header-right {
+                float: none;
+            }
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            document.getElementById("hiddenitems").style.display = "none";
+            document.getElementById("data").style.display = "none";
+        }
+
+        function homeclose() {
+            document.getElementById("calender").style.display = "none";
+            document.getElementById("addadmin").style.display = "none";
+        }
+
+        function homeopen() {
+            document.getElementById("calender").style.display = "";
+            document.getElementById("addadmin").style.display = "";
+        }
+    </script>
+</head>
+
+<body>
+
+
+
+    <div class="w3-sidebar w3-bar-block w3-light-grey w3-card" style="width:200px">
+        <h5 class="w3-bar-item"><img src="./images/svlogo.png" width="120px" height="120px"></h5>
+        <button class="w3-bar-item w3-button tablink" onclick="homeopen();openEvent(event, 'home')">Home</button>
+        <button class="w3-bar-item w3-button tablink" onclick="homeclose();openEvent(event, 'addsub')">Add Subjects</button>
+        <button class="w3-bar-item w3-button tablink" onclick="homeclose();openEvent(event, 'report')">Generate Report</button>
+        <form method="GET" action="/feedback/admin/logout"> <button class="w3-bar-item w3-button tablink">Logout</button></form>
+    </div>
+
+    <div style="margin-left:200px">
+        <div class="w3-padding">
+            <center>
+                <h2> SRI VENKATESWARA COLLEGE OF ENGINEERING</h2>
+
+                <h5>EDUCATION FOR A BETTER SOCIETY</h5>
+
+            </center>
+        </div>
+        <div class="header">
+
+            <div class="header-right">
+                <a class="active" id="addadmin" onclick="homeclose();openEvent(event, 'addAdmin')">add admin</a>
+            </div>
+        </div>
+
+        <div id="calender" class="calendar">
+            <div class="calendar__month calendar__empty--1"><span class="title"></span>
+                <div class="year-block hidden">2017</div>
+                <div class="clock hidden">
+                    <div class="clock__hour__container">
+                        <div class="clock__hour"></div>
+                    </div>
+                    <div class="clock__minute__container">
+                        <div class="clock__minute"></div>
+                    </div>
+                    <div class="clock__second__container">
+                        <div class="clock__second"></div>
+                    </div>
+                    <div class="clock__dot"></div>
+                </div>
+                <div class="date-block hidden">
+                    <div class="date-block__month">Jan</div>
+                    <div class="date-block__date">12</div>
+                    <div class="date-block__day">Wed</div>
+                </div>
+            </div>
+            <div class="calendar__month calendar__empty--2"><span class="title"></span>
+                <div class="year-block hidden">2017</div>
+                <div class="clock hidden">
+                    <div class="clock__hour__container">
+                        <div class="clock__hour"></div>
+                    </div>
+                    <div class="clock__minute__container">
+                        <div class="clock__minute"></div>
+                    </div>
+                    <div class="clock__second__container">
+                        <div class="clock__second"></div>
+                    </div>
+                    <div class="clock__dot"></div>
+                </div>
+                <div class="date-block hidden">
+                    <div class="date-block__month">Jan</div>
+                    <div class="date-block__date">12</div>
+                    <div class="date-block__day">Wed</div>
+                </div>
+            </div>
+            <div class="calendar__month calendar__empty--3"><span class="title"></span>
+                <div class="year-block hidden">2017</div>
+                <div class="clock hidden">
+                    <div class="clock__hour__container">
+                        <div class="clock__hour"></div>
+                    </div>
+                    <div class="clock__minute__container">
+                        <div class="clock__minute"></div>
+                    </div>
+                    <div class="clock__second__container">
+                        <div class="clock__second"></div>
+                    </div>
+                    <div class="clock__dot"></div>
+                </div>
+                <div class="date-block hidden">
+                    <div class="date-block__month">Jan</div>
+                    <div class="date-block__date">12</div>
+                    <div class="date-block__day">Wed</div>
+                </div>
+            </div>
+        </div>
+        <!-- partial -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+        <script src="./time.js"></script>
+        <div id="home" class="w3-container Event" style="display:none">
+        </div>
+        <div id="addAdmin" class="w3-container Event" style="display:none">
+            <h2>home</h2>
+            <p>home is the capital Event of England.</p>
+            <p>It is the most populous Event in the United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
+        </div>
+
+        <div id="addsub" class="w3-container Event" style="display:none">
+            <form method="POST" action="/feedback/admin/addsubjects" style="max-width:500px;margin:auto">
+                <div class="input-container">
+                    <i class="icon"> Branch</i>
+                    <select class="input-field" name="branch" id="branch">
+                <option value="cse">cse</option>
+                <option value="eee">eee</option>
+                <option value="civil">civil</option>
+                <option value="ece">ece</option>
+                <option value="me">me</option>
+              </select>
+                </div>
+                <div class="input-container">
+                    <i class="icon">select SEM</i>
+                    <select name="semester" class="input-field" id="sem">
+                <option value="1">1-1</option>
+                <option value="2">1-2</option>
+                <option value="3">2-1</option>
+                <option value="4">2-2</option>
+                <option value="5">3-1</option>
+                <option value="6">3-2</option>
+                <option value="7">4-1</option>
+                <option value="8">4-2</option>
+                
+              </select>
+                </div>
+                <div class="input-container">
+                    <i class="icon">Subject 1</i>
+                    <input class="input-field" type="text" placeholder="Enter Subject 1 name" name="subject1">
+                </div>
+
+                <div class="input-container">
+                    <i class="icon">Subject 2</i>
+                    <input class="input-field" type="text" placeholder="Enter Subject 2 name" name="subject2">
+                </div>
+
+                <div class="input-container">
+                    <i class=" icon">Subject 3</i>
+                    <input class="input-field" type="text" placeholder="Enter subject 3 name" name="subject3">
+                </div>
+                <div class="input-container">
+                    <i class=" icon">Subject 4</i>
+                    <input class="input-field" type="text" placeholder="Enter subject 4 name" name="subject4">
+                </div>
+                <div class="input-container">
+                    <i class=" icon">Subject 5</i>
+                    <input class="input-field" type="text" placeholder="Enter subject 5 name" name="subject5">
+                </div>
+                <div class="input-container">
+                    <i class=" icon">Subject 6</i>
+                    <input class="input-field" type="text" placeholder="Enter subject 6 name" name="subject6">
+                </div>
+
+
+                <button type="submit" class="btn">Register Subjects</button>
+            </form>
+        </div>
+
+        <div id="report" class="w3-container Event" style="display:none">
+            <center>
+                <h2>Generate Subjects Report</h2>
+            </center>
+
+            <form method="POST" action="/feedback/admin/reports">
+                <table class="w3-table-all w3-centered">
+                    <tr>
+                        <th> branch </th>
+                        <th><select class="input-field" name="branch" id="branch">
+                        <option value="cse">cse</option>
+                        <option value="eee">eee</option>
+                        <option value="civil">civil</option>
+                        <option value="ece">ece</option>
+                        <option value="me">me</option>
+                      </select></th>
+                        <th> sem</th>
+                        <th><select name="semester" class="input-field" id="sem">
+                        <option value="1">1-1</option>
+                        <option value="2">1-2</option>
+                        <option value="3">2-1</option>
+                        <option value="4">2-2</option>
+                        <option value="5">3-1</option>
+                        <option value="6">3-2</option>
+                        <option value="7">4-1</option>
+                        <option value="8">4-2</option>
+                        
+                      </select></th>
+
+                        <th> subject</th>
+                        <th> <input type="text" placeholder="subject" id="subjectname" name="subject"></th>
+                        <th> feedbackId</th>
+                        <th>
+                            <input type="text" placeholder="feedbackId" name="feedbackId">
+                        </th>
+                        <th>
+                            <button id="btnExportToCsv">Generate</button>
+                        </th>
+                    </tr>
+                </table>
+            </form>
+            <table>
+                <tr>
+                    <td>
+                        <div id="skill1"></div>
+                    </td>
+                    <td>
+                        <div id="skill2"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="skill3"></div>
+                    </td>
+                    <td>
+                        <div id="skill4"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="skill5"></div>
+                    </td>
+                </tr>
+            </table>
+            <label>Download file name: <input id="fileName" value="SubjectReport" placeholder="file name"/></label>
+
+            <button onclick="download('csv')">download CSV file</button>
+            <!-- partial -->
+            <script src='https://unpkg.com/export-from-json'></script>
+
+            <pre id="data" style="padding: 8px; border: whitesmoke double 4px; background-color: lightgray; ">
+                [
+                {
+                    "level/skill": "Very Good",
+                   " Subject Knowledge":<%= skill1value1%>,
+                    "Teaching & Communication Skills": <%= skill2value1%>,
+                    "Providing Relevant Examples ":<%= skill3value1%>,
+                    "Doubts Clarification":<%= skill4value1%>,
+                    "On Time Syllabus Coverage":<%= skill5value1%>,
+                    "Average":<%= (((skill1value1+skill2value1+skill3value1+skill4value1+skill5value1)/5)/(skill1value1+skill1value2+skill1value3+skill1value4+skill1value5))*100 %>
+                },
+                {
+                    "level/skill": "Good",
+                    " Subject Knowledge":<%= skill1value2%>,
+                    "Teaching & Communication Skills": <%= skill2value2%>,
+                    "Providing Relevant Examples ": <%= skill3value2%>,
+                    "Doubts Clarification":<%= skill4value2%>,
+                    "On Time Syllabus Coverage":<%= skill5value2%>,
+                    "Average":<%= (((skill1value2+skill2value2+skill3value2+skill4value2+skill5value2)/5)/(skill1value1+skill1value2+skill1value3+skill1value4+skill1value5))*100 %>
+                },
+                {
+                    "level/skill": "Average",
+                    " Subject Knowledge":<%= skill1value3%>,
+                    "Teaching & Communication Skills": <%= skill2value3%>,
+                    "Providing Relevant Examples ": <%= skill3value3%>,
+                    "Doubts Clarification":<%= skill4value3%>,
+                    "On Time Syllabus Coverage":<%= skill5value3%>,
+                    "Average":<%= (((skill1value3+skill2value3+skill3value3+skill4value3+skill5value3)/5)/(skill1value1+skill1value2+skill1value3+skill1value4+skill1value5))*100 %>
+                },
+                {
+                    "level/skill": "Bad",
+                    " Subject Knowledge":<%= skill1value4%>,
+                    "Teaching & Communication Skills": <%= skill2value4%>,
+                    "Providing Relevant Examples ":<%= skill3value4%> ,
+                    "Doubts Clarification":<%= skill4value4%>,
+                    "On Time Syllabus Coverage":<%= skill5value4%>,
+                    "Average":<%= (((skill1value4+skill2value4+skill3value4+skill4value4+skill5value4)/5)/(skill1value1+skill1value2+skill1value3+skill1value4+skill1value5))*100 %>
+                },
+                {
+                    "level/skill": "Very Bad",
+                    " Subject Knowledge":<%= skill1value5%>,
+                    "Teaching & Communication Skills": <%= skill2value5%>,
+                    "Providing Relevant Examples ":<%= skill3value5%> ,
+                    "Doubts Clarification":<%= skill4value5%>,
+                    "On Time Syllabus Coverage":<%= skill5value5%>,
+                    "Average":<%= (((skill1value5+skill2value5+skill3value5+skill4value5+skill5value5)/5)/(skill1value1+skill1value2+skill1value3+skill1value4+skill1value5))*100 %>
+                }
+            ]
+        </pre>
+
+            <table id="dataTable" class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th> Subject Knowledge </th>
+                        <th>Teaching & Communication Skills </th>
+                        <th>Providing Relevant Examples </th>
+                        <th>Doubts Clarification </th>
+                        <th>On Time Syllabus Coverage </th>
+                        <th>Average</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>very good</td>
+                        <td>
+                            <%= skill1value1 %>
+
+                        </td>
+                        <td>
+                            <%= skill2value1%>
+                        </td>
+                        <td>
+                            <%= skill3value1%>
+                        </td>
+                        <td>
+                            <%= skill4value1%>
+                        </td>
+                        <td>
+                            <%= skill5value1%>
+                        </td>
+                        <td>
+                            <%= (((skill1value1+skill2value1+skill3value1+skill4value1+skill5value1)/5)/(skill1value1+skill1value2+skill1value3+skill1value4+skill1value5))*100 %>%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>good</td>
+                        <td>
+                            <%= skill1value2%>
+                        </td>
+                        <td>
+                            <%= skill2value2%>
+                        </td>
+                        <td>
+                            <%= skill3value2%>
+                        </td>
+                        <td>
+                            <%= skill4value2%>
+                        </td>
+                        <td>
+                            <%= skill5value2%>
+                        </td>
+                        <td>
+                            <%= (((skill1value2+skill2value2+skill3value2+skill4value2+skill5value2)/5)/(skill1value1+skill1value2+skill1value3+skill1value4+skill1value5))*100 %>%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>average</td>
+                        <td>
+                            <%= skill1value3%>
+                        </td>
+                        <td>
+                            <%= skill2value3%>
+                        </td>
+                        <td>
+                            <%= skill3value3%>
+                        </td>
+                        <td>
+                            <%= skill4value3%>
+                        </td>
+                        <td>
+                            <%= skill5value3%>
+                        </td>
+                        <td>
+                            <%= (((skill1value3+skill2value3+skill3value3+skill4value3+skill5value3)/5)/(skill1value1+skill1value2+skill1value3+skill1value4+skill1value5))*100 %>%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>bad</td>
+                        <td>
+                            <%= skill1value4%>
+                        </td>
+                        <td>
+                            <%= skill2value4%>
+                        </td>
+                        <td>
+                            <%= skill3value4%>
+                        </td>
+                        <td>
+                            <%= skill4value4%>
+                        </td>
+                        <td>
+                            <%= skill5value4%>
+                        </td>
+                        <td>
+                            <%= (((skill1value4+skill2value4+skill3value4+skill4value4+skill5value4)/5)/(skill1value1+skill1value2+skill1value3+skill1value4+skill1value5))*100 %>%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>very bad</td>
+                        <td>
+                            <%= skill1value5%>
+                        </td>
+                        <td>
+                            <%= skill2value5%>
+                        </td>
+                        <td>
+                            <%= skill3value5%>
+                        </td>
+                        <td>
+                            <%= skill4value5%>
+                        </td>
+                        <td>
+                            <%= skill5value5%>
+                        </td>
+                        <td>
+                            <%= (((skill1value5+skill2value5+skill3value5+skill4value5+skill5value5)/5)/(skill1value1+skill1value2+skill1value3+skill1value4+skill1value5))*100 %>%
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <script src="./js/exportreport.js"></script>
+
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+            <script type="text/javascript">
+                // Load google charts
+                google.charts.load('current', {
+                    'packages': ['corechart']
+                });
+                google.charts.setOnLoadCallback(drawChart);
+
+                // Draw the chart and set the chart values
+                function drawChart() {
+                    var data1 = google.visualization.arrayToDataTable([
+                        ['skill', 'rating'],
+                        ['Very Good', Number("<%= skill1value1%>")],
+                        ['Good', Number("<%= skill1value2%>")],
+                        ['Average', Number("<%= skill1value3%>")],
+                        ['Bad', Number("<%= skill1value4%>")],
+                        ['Very Bad', Number("<%= skill1value5%>")]
+                    ]);
+                    var data2 = google.visualization.arrayToDataTable([
+                        ['skill', 'rating'],
+                        ['Very Good', Number("<%= skill2value1%>")],
+                        ['Good', Number("<%= skill2value2%>")],
+                        ['Average', Number("<%= skill2value3%>")],
+                        ['Bad', Number("<%= skill2value4%>")],
+                        ['Very Bad', Number("<%= skill2value5%>")]
+                    ]);
+                    var data3 = google.visualization.arrayToDataTable([
+                        ['skill', 'rating'],
+                        ['Very Good', Number("<%= skill3value1%>")],
+                        ['Good', Number("<%= skill3value2%>")],
+                        ['Average', Number("<%= skill3value3%>")],
+                        ['Bad', Number("<%= skill3value4%>")],
+                        ['Very Bad', Number("<%= skill3value5%>")]
+                    ]);
+                    var data4 = google.visualization.arrayToDataTable([
+                        ['skill', 'rating'],
+                        ['Very Good', Number("<%= skill4value1%>")],
+                        ['Good', Number("<%= skill4value2%>")],
+                        ['Average', Number("<%= skill4value3%>")],
+                        ['Bad', Number("<%= skill4value4%>")],
+                        ['Very Bad', Number("<%= skill4value5%>")]
+                    ]);
+                    var data5 = google.visualization.arrayToDataTable([
+                        ['skill', 'rating'],
+                        ['Very Good', Number("<%= skill5value1%>")],
+                        ['Good', Number("<%= skill5value2%>")],
+                        ['Average', Number("<%= skill5value3%>")],
+                        ['Bad', Number("<%= skill5value4%>")],
+                        ['Very Bad', Number("<%= skill5value5%>")]
+                    ]);
+
+                    // Optional; add a title and set the width and height of the chart
+                    var options1 = {
+                        'title': 'Subject Knowledge',
+                        'width': 550,
+                        'height': 400
+                    };
+                    var options2 = {
+                        'title': 'Teaching & Communication Skills',
+                        'width': 550,
+                        'height': 400
+                    };
+                    var options3 = {
+                        'title': 'Providing Relevant Examples',
+                        'width': 550,
+                        'height': 400
+                    };
+                    var options4 = {
+                        'title': 'Doubts Clarification',
+                        'width': 550,
+                        'height': 400
+                    };
+                    var options5 = {
+                        'title': 'On Time Syllabus Coverage',
+                        'width': 550,
+                        'height': 400
+                    };
+
+                    // Display the chart inside the <div> element with id="piechart"
+                    var chart = new google.visualization.PieChart(document.getElementById('skill1'));
+                    chart.draw(data1, options1);
+                    var chart = new google.visualization.PieChart(document.getElementById('skill2'));
+                    chart.draw(data2, options2);
+                    var chart = new google.visualization.PieChart(document.getElementById('skill3'));
+                    chart.draw(data3, options3);
+                    var chart = new google.visualization.PieChart(document.getElementById('skill4'));
+                    chart.draw(data4, options4);
+                    var chart = new google.visualization.PieChart(document.getElementById('skill5'));
+                    chart.draw(data5, options5);
+                }
+            </script>
+
+        </div>
+
+    </div>
+    <div id="hiddenitems">
+        <input type="text" value="<%= adminId %>"><br>
+        <input type="text" value="<%= name %>">
+    </div>
+    <script>
+        const $data = document.getElementById('data')
+        const $fileName = document.getElementById('fileName')
+        document.body.addEventListener('click', (e) => {
+            if (e.target === $data) {
+                $data.setAttribute('contenteditable', 'true')
+            } else {
+                $data.setAttribute('contenteditable', 'false')
+            }
+        })
+
+        function download(exportType) {
+            const fileName = $fileName.value
+            const data = JSON.parse($data.innerText)
+            window.exportFromJSON({
+                data,
+                fileName,
+                exportType
+            })
+        }
+
+        function openEvent(evt, EventName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("Event");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+            }
+            document.getElementById(EventName).style.display = "block";
+            evt.currentTarget.className += " w3-red";
+        }
+    </script>
+
+</body>
+
+</html>
