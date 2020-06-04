@@ -4,47 +4,36 @@ class reportsServices {
     reports = async(branch, semester, subject, feedbackId, adminId, name) => {
 
         return new Promise((resolve, reject) => {
-            console.log("failed1")
             db.collection(branch + '_feedbackData').find({ $and: [{ feedbackId: feedbackId }, { semester: semester }] }).toArray((err, result) => {
                 try {
                     if (err) {
                         throw err;
                     } else {
-                        console.log(result.length, "fal")
                         if (result.length !== 0) {
 
-
-                            console.log(result, "okokokokokok")
                             let values = [];
-
                             for (let i = 0; i < result.length; i++) {
                                 if (result[i].subject1values.subject == subject) {
                                     values[i] = result[i].subject1values.values;
 
                                 } else if (result[i].subject2values.subject == subject) {
-                                    values[i] = result[i].subject1values.values;
+                                    values[i] = result[i].subject2values.values;
 
-                                } else if (result[i].subject2values.subject == subject) {
-                                    values[i] = result[i].subject1values.values;
+                                } else if (result[i].subject3values.subject == subject) {
+                                    values[i] = result[i].subject3values.values;
 
-                                } else if (result[i].subject2values.subject == subject) {
-                                    values[i] = result[i].subject1values.values;
+                                } else if (result[i].subject4values.subject == subject) {
+                                    values[i] = result[i].subject4values.values;
 
-                                } else if (result[i].subject2values.subject == subject) {
-                                    values[i] = result[i].subject1values.values;
+                                } else if (result[i].subject5values.subject == subject) {
+                                    values[i] = result[i].subject5values.values;
 
-                                } else if (result[i].subject2values.subject == subject) {
-                                    values[i] = result[i].subject1values.values;
+                                } else if (result[i].subject6values.subject == subject) {
+                                    values[i] = result[i].subject6values.values;
 
                                 }
 
                             }
-
-                            for (let i = 0; i < result.length; i++) {
-                                console.log(values[i])
-
-                            }
-                            console.log("values services0", values, semester, branch, feedbackId);
                             let skill1value1 = 0,
                                 skill1value2 = 0,
                                 skill1value3 = 0,
