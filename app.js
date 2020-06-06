@@ -50,15 +50,30 @@ app.get('/formresponse', (req, res) => {
 });
 
 app.get('/adminlogin', (req, res) => {
-    res.render("adminlogin");
+    try {
+        res.render("adminlogin");
+    } catch (err) {
+        console.log(err)
+        res.render("adminlogin");
+    }
+
 });
 
 app.get('/admindashboard', (req, res) => {
-    res.render("admindashboard", resultData);
+    try {
+        res.render("admindashboard", resultData);
+    } catch (err) {
+        res.render("adminlogin");
+    }
+
 });
 
 app.get('/reports', (req, res) => {
-    res.render("admindashboard", resultData);
+    try {
+        res.render("admindashboard", resultData);
+    } catch (err) {
+        res.render("adminlogin");
+    }
 });
 
 app.listen(process.env.PORT || 3000, () => {
